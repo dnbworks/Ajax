@@ -1,0 +1,142 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    margin-left: 210px;
+}
+
+aside a {
+    display: block;
+    width: 200px;
+    height: 120px;
+  
+}
+
+aside a#beginners {
+    background: url('../img/beginner-pose.png') no-repeat;
+    background-size: 100%;
+}
+
+aside a#beginners.active {
+    background: url('../img/beginner-pose-active.png') no-repeat;
+    background-size: 100%;
+}
+
+aside a#intermediates {
+    background: url('../img/intermediate-pose.png') no-repeat;
+    background-size: 100%;
+}
+
+aside a#intermediates.active {
+    background: url('../img/intermediate-pose-active.png') no-repeat;
+    background-size: 100%;
+}
+
+aside a#advances {
+    background: url('../img/advanced-pose.png') no-repeat;
+    background-size: 100%;
+}
+
+aside a#advances.active {
+    background: url('../img/advanced-pose-active.png') no-repeat;
+    background-size: 100%;
+}
+
+
+section {
+    padding: 15px;
+    background: #d3d3d3;
+}
+
+table, td, th {
+    border: 6px solid #333;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td, th {
+    padding: 10px 20px;
+}
+
+#enroll {
+  
+    border: 1px solid #333;
+    padding: 5px 10px;
+    display: block;
+    width: 200px;
+    border-radius: 10px;
+    margin: 30px 0;
+        
+    
+}
+
+nav a {
+    width: 200px;
+    height: 90px;
+    display: inline-block;
+    position: relative;
+    
+}
+
+nav a:hover .tooltips {
+    display: block;
+    
+}
+
+
+.tooltips {
+    position: absolute;
+    background:rgb(255, 255, 255) ;
+    padding: 10px;
+    top: -50px;
+    right: -100px;
+    z-index: 2;
+    border-radius: 10px;
+    border: 1px solid #333;
+    display: none;
+}
+
+
+#welcome.inactive {
+    background: url('../img/welcome.png') no-repeat;
+    background-size: 100%;
+}
+
+#welcome.active {
+  background: url('../img/welcome-Active.png') no-repeat;
+  background-size: 100%;
+}
+
+#beginner.inactive {
+    background: url('../img/beginner.png') no-repeat;
+    background-size: 100%;
+}
+
+#beginner.active {
+  background: url('../img/beginner-Active.png') no-repeat;
+  background-size: 100%;
+}
+
+#intermediate.inactive {
+    background: url('../img/intermediate.png') no-repeat;
+    background-size: 100%;
+}
+
+#intermediate.active {
+  background: url('../img/intermediate-Active.png') no-repeat;
+  background-size: 100%;
+}
+
+#advance.inactive {
+    background: url('../img/advance.png') no-repeat;
+    background-size: 100%;
+}
+
+#advance.active {
+  background: url('../img/advance-Active.png') no-repeat;
+  background-size: 100%;
+}

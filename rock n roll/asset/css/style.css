@@ -1,0 +1,49 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primaryTextColor: rgb(53, 155, 107);
+    --text-color: #fff;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1080px;
+    max-height: 1080px;
+    height: 100vh;
+    padding: 15px;
+    margin: 0 auto;
+    background: url('../img/bg-img.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-family: sans-serif;
+    color: var(--primaryTextColor);
+    font-size: 2rem;
+}
+
+p {
+    font-family: sans-serif;
+    color: var(--text-color);
+
+}
+
+.logo {
+    display: block;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.details {
+    height: 400px;
+    max-height: 350px;
+    border: 5px solid #333;
+    background: rgb(85, 85, 85);
+}
+
