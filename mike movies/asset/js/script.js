@@ -1,5 +1,4 @@
 
-var desc = "Restful api. covers different aspects in which rest api can be so curial on web apps. data consupmtions via api following crud application and authentication. created using vanilla php"
 window.onload = initpage;
 
 function initpage(){
@@ -8,7 +7,7 @@ function initpage(){
 
     addEventHandler(username, "blur", checkUsername);
     addEventHandler(confirmPassword, "blur", checkPassword);
-    // addEventHandler(username, "focus", focusUsername);
+    addEventHandler(username, "focus", focusUsername);
 
     // document.querySelector("#username").onblur = checkUsername;
     document.querySelector("#register").disable = true;
@@ -61,58 +60,72 @@ function showUsernameStatus() {
       
 }
 
-function focusUsername(){
-    var username = document.querySelector("#username");
-    username.className = "";
-    console.log("hi")
+function focusUsername(e){
+    var targetedElement = getActivatedObject(e);
+    targetedElement.className = "";
+    
+    // console.log("hi", targetedElement)
 }
 
 function checkPassword(){
     var password = document.querySelector("#password");
     var confirmPassword = document.querySelector("#confirm-password");
 
-    if((password.value != "") || (password.value != confirmPassword.value)){
+    password.className = "inprogress";
+
+    
+    if((password.value == "") || (password.value != confirmPassword.value)){
+        
         password.className = 'denied';
-        return;
+        
+        return ;
+        // console.log(password.value);
+        // console.log(confirmPassword.value);
+   
     }
 
-    var request = createRequest();
     
+     var request = createRequest();
     if(request != null){
 
-        var passwordValue = password.value;
+        var passwordValue = escape(password.value);
 
-        
-        document.querySelector("#password").className = 'inprogress';
+        // console.log(passwordValue);
             
         var url = 'http://localhost/ajax/mike%20movies/checkPassword.php?password=' + passwordValue;
 
-   
+
         request.onreadystatechange = showPasswordStatus;
         request.open("GET", url, true);
         request.send(null);
+
         
-       
- 
     }
+
+// </1234>
+  
 }
 
 
 function showPasswordStatus(){
+     var password = document.querySelector("#password");
     if(request.responseText == 'yes'){
 
-        var username_input = document.querySelector("#username");
-        username_input.className = 'approved';
-        document.querySelector("#username").nextElementSibling.textContent = "";
-        document.querySelector("#username").nextElementSibling.style.display = "none";
+       
+        password.className = "approved";
+        // document.querySelector("#username").nextElementSibling.textContent = "";
+         password.nextElementSibling.style.display = "none";
         document.querySelector("#register").disable = false;
 
     } else {
         // username has been already taken
-        console.log('no');
-        document.querySelector("#username").className = 'denied';
-        document.querySelector("#username").nextElementSibling.style.display = "block";
-        document.querySelector("#username").nextElementSibling.textContent = "This username is already taken";
+        // console.log('no');
+         password.className = "denied";
+         password.focus();
+         password.select();
+        //  console.log( password);
+        password.nextElementSibling.style.display = "block";
+        // document.querySelector("#username").nextElementSibling.textContent = "This username is already taken";
         document.querySelector("#register").disable = true;
     }
 }

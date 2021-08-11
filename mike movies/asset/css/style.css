@@ -99,6 +99,30 @@ input#password.denied {
 }
 
 
+
+
+input#confirm-password {
+    background:   url('../img/icon.jpg') no-repeat, #fff;
+    background-size: 40px; 
+    background-position:100% 50px;
+}
+
+input#confirm-password.inprogress {
+    background-position: 100% 0px;
+}
+
+input#confirm-password.approved {
+
+    background-position: 100% -34px;
+    border: 2px solid rgb(70, 190, 106);
+}
+
+input#confirm-password.denied {
+    background-position: 100% -72px;
+    border: 2px solid rgb(190, 70, 70);
+}
+
+
 input#username {
     background:   url('../img/icon.jpg') no-repeat, #fff;
     background-size: 40px; 

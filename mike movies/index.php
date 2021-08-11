@@ -36,6 +36,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">    
                                     <input type="password" name="password" id="password"> 
+                                    <p class="error">password must be 6 or more characters and contain a number</p> 
                                 </div>
                             </div>
                             <div class="input-field row justify-content-center align-items-center">
@@ -44,7 +45,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">    
                                     <input type="password" name="confirm-password" id="confirm-password">
-                                    <p class="error"></p> 
+                                   
                                 </div>
                             </div>
                             <div class="input-field row justify-content-center align-items-center">
@@ -81,9 +82,18 @@
                                 <div class="col-12 col-md-6 col-lg-6">    
                                     <select name="genre" id="genre">
                                         <option value="action">action</option>
+                                        <option value="adventure">adventure</option>
+                                        <option value="animation">animation</option>
                                         <option value="drama">drama</option>
+                                        <option value="crime">crime</option>
                                         <option value="comedy">comedy</option>
+                                        <option value="documentary">documentary</option>
+                                        <option value="musical">musical</option>
+                                        <option value="romance">romance</option>
                                         <option value="horror">horror</option>
+                                        <option value="scifi">scifi/Fantasy</option>
+                                        <option value="suspense">suspense</option>
+                                        <option value="western">western</option>
                                     </select>
                                 </div>
                                 

@@ -3,14 +3,14 @@
 require_once('function/connectivity.php');
 
 
-$name = $_GET['username'];
+$pwd = $_GET['password'];
 
-if(!empty($name)){
+if(!empty($pwd)){
   
 
     $dbc = mysqli_connect(host, user, pwd, database ) or die("couldn't connect to database");
 
-    $query = "SELECT username FROM mike_movies WHERE username ='" . $name . "'";
+    $query = "SELECT password FROM mike_movies WHERE password ='" . $pwd . "'";
 
     $data = mysqli_query($dbc, $query);
 
