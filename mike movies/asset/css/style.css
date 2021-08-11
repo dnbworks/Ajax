@@ -13,6 +13,25 @@
   
 }
 
+#cover-bar {
+    position: relative;
+    border: 1px solid red;
+    height: 200px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#cover-bar img {
+    position: absolute;
+  
+    top: 15px;
+    z-index: 10;
+    display: block;
+
+    overflow: hidden;
+}
+
+
 #logo {
     position: absolute;
     z-index: 2;

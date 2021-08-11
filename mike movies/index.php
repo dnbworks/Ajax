@@ -13,6 +13,7 @@
     <div class="top-img-bg"></div>
     
     <div class="wrapper">
+    
         <img src="asset/img/logo.png" alt="" srcset="" id="logo" >
         <div class="container">
             <div class="row justify-content-center">
@@ -25,7 +26,7 @@
                                     <label for="username">username:</label>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">    
-                                    <input type="text" name="username" id="username" class="username" autocomplete="off">
+                                    <input type="text" name="username" id="username" class="username" autocomplete="off" >
                                     <p class="error"></p>
                                 </div>
                             
@@ -53,7 +54,7 @@
                                     <label for="first name">first name:</label>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">    
-                                    <input type="text" name="first name" id="first name"> 
+                                    <input type="text" name="first name" id="firstname"> 
                                 </div>
                                 
                             </div>
@@ -62,7 +63,7 @@
                                     <label for="last name">last name:</label>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-6">    
-                                    <input type="text" name="last name" id="last name">
+                                    <input type="text" name="last name" id="lastname">
                                 </div>
                                 
                             </div>
@@ -119,9 +120,17 @@
                             </div>
                             <div class="input-field d-flex justify-content-center">
                                 <!-- <input /> -->
-                                <button type="submit" id="register" name="register">Submit</button>
+                                <button type="button" id="register" name="register" >Submit</button>
                             </div>
                         </form>
+                        <div id="cover-bar">
+                            <img src="asset/img/1.jpg" alt="" srcset="" width="110px" style="left:0px; ">
+                            <img src="asset/img/2.jpg" alt="" srcset="" width="110px" style="left:120px; ">
+                            <img src="asset/img/3.jpg" alt="" srcset="" width="110px" style="left:240px; ">
+                            <img src="asset/img/4.jpg" alt="" srcset="" width="110px" style="left:360px; ">
+                            <img src="asset/img/5.jpg" alt="" srcset="" width="110px" style="left:480px; ">
+                            <img src="asset/img/6.jpg" alt="" srcset="" width="110px" style="left:600px; ">
+                        </div>
                     </main>
                 </div>
             </div>

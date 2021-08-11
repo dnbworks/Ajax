@@ -1,22 +1,31 @@
 
 window.onload = initpage;
 
+var usernameValid = false;
+var passwordValid = false;
+
 function initpage(){
     var username = document.querySelector("#username");
     var confirmPassword = document.querySelector("#confirm-password");
+    var registerBtn = document.querySelector("#register");
 
     addEventHandler(username, "blur", checkUsername);
     addEventHandler(confirmPassword, "blur", checkPassword);
     addEventHandler(username, "focus", focusUsername);
+    addEventHandler(registerBtn, "click", registerUser);
 
-    // document.querySelector("#username").onblur = checkUsername;
-    document.querySelector("#register").disable = true;
+
+
+
+    registerBtn.disabled = true;
+
+
 }
 
 function checkUsername(e) {
-    request = createRequest();
+    UsernameRequest = createRequest();
     
-    if(request != null){
+    if(UsernameRequest != null){
 
         var username = document.querySelector("#username").value;
 
@@ -25,11 +34,11 @@ function checkUsername(e) {
             
             var url = 'http://localhost/ajax/mike%20movies/checkusername.php?username=' + username;
     
-            request.open("GET", url, true);
+            UsernameRequest.open("GET", url, true);
     
-            request.onreadystatechange = showUsernameStatus;
+            UsernameRequest.onreadystatechange = showUsernameStatus;
     
-            request.send(null);
+            UsernameRequest.send(null);
         }
        
  
@@ -38,24 +47,27 @@ function checkUsername(e) {
 }
 
 function showUsernameStatus() {
-    if(request.readyState == 4 && request.status == 200 ){
-        if(request.responseText == 'yes'){
+    if(UsernameRequest.readyState == 4 && UsernameRequest.status == 200 ){
+        if(UsernameRequest.responseText == 'yes'){
             // no errors
-            console.log('yes');
+
             var username_input = document.querySelector("#username");
             username_input.className = 'approved';
             document.querySelector("#username").nextElementSibling.textContent = "";
             document.querySelector("#username").nextElementSibling.style.display = "none";
-            document.querySelector("#register").disable = false;
+            usernameValid = true;
+
 
         } else {
             // username has been already taken
-            console.log('no');
+    
             document.querySelector("#username").className = 'denied';
             document.querySelector("#username").nextElementSibling.style.display = "block";
             document.querySelector("#username").nextElementSibling.textContent = "This username is already taken";
-            document.querySelector("#register").disable = true;
+            usernameValid = false;
+   
         }
+        checkFormStatus();
     }
       
 }
@@ -64,7 +76,7 @@ function focusUsername(e){
     var targetedElement = getActivatedObject(e);
     targetedElement.className = "";
     
-    // console.log("hi", targetedElement)
+
 }
 
 function checkPassword(){
@@ -77,57 +89,132 @@ function checkPassword(){
     if((password.value == "") || (password.value != confirmPassword.value)){
         
         password.className = 'denied';
+        passwordValid = false;
         
+        checkFormStatus();
         return ;
-        // console.log(password.value);
-        // console.log(confirmPassword.value);
+
    
     }
 
     
-     var request = createRequest();
-    if(request != null){
+    passowordRequest = createRequest();
+    if(passowordRequest != null){
 
         var passwordValue = escape(password.value);
 
-        // console.log(passwordValue);
             
         var url = 'http://localhost/ajax/mike%20movies/checkPassword.php?password=' + passwordValue;
 
 
-        request.onreadystatechange = showPasswordStatus;
-        request.open("GET", url, true);
-        request.send(null);
+        passowordRequest.onreadystatechange = showPasswordStatus;
+        passowordRequest.open("GET", url, true);
+        passowordRequest.send(null);
 
         
     }
 
-// </1234>
   
 }
 
 
 function showPasswordStatus(){
      var password = document.querySelector("#password");
-    if(request.responseText == 'yes'){
+    if(passowordRequest.responseText == 'yes'){
 
-       
         password.className = "approved";
         // document.querySelector("#username").nextElementSibling.textContent = "";
          password.nextElementSibling.style.display = "none";
-        document.querySelector("#register").disable = false;
+         passwordValid = true;
+
 
     } else {
-        // username has been already taken
-        // console.log('no');
+        // password is invalid
+    
          password.className = "denied";
          password.focus();
          password.select();
-        //  console.log( password);
+
         password.nextElementSibling.style.display = "block";
         // document.querySelector("#username").nextElementSibling.textContent = "This username is already taken";
-        document.querySelector("#register").disable = true;
+        passwordValid = false;
+    }
+    checkFormStatus();
+}
+
+function checkFormStatus(){
+    if(usernameValid && passwordValid){
+        document.querySelector("#register").disabled = false;
+    } else {
+        document.querySelector("#register").disabled = true;
     }
 }
 
+function registerUser(e){
+    var targetedElement = getActivatedObject(e);
+    targetedElement.textContent = "Processing...";
+
+    registerRequest = createRequest();
+    if(registerRequest != null){
+
+        // var passwordValue = escape(password.value);
+        let username = document.querySelector("#username").disabled = true;
+        let pwd = document.querySelector("#password").disabled = true;
+        let pwd_confirm = document.querySelector("#confirm-password").disabled = true;
+        let firstname = document.querySelector("#firstname").disabled = true;
+        let lastname = document.querySelector("#lastname ").disabled = true;
+        let email = document.querySelector("#email").disabled = true;
+        let genre = document.querySelector("#genre").disabled = true;
+        let fav_movie = document.querySelector("#favorite_movie").disabled = true;
+        let fav_desc = document.querySelector("#describe_movie").disabled = true;
+
+
+
+
+        // let username = escape(document.querySelector("#username").value);
+        // let pwd = escape(document.querySelector("#password").value);
+        // let firstname = escape(document.querySelector("#firstname").value);
+        // let lastname = escape(document.querySelector("#lastname ").value);
+        // let email = escape(document.querySelector("#email").value);
+        // let genre = escape(document.querySelector("#genre").value);
+        // let fav_movie = escape(document.querySelector("#favorite_movie").value);
+        // let fav_desc = escape(document.querySelector("#describe_movie").value);
+
+        console.log(username, pwd, firstname, lastname, email,
+            genre, fav_movie, fav_desc);
+
+            
+        var url = 'http://localhost/ajax/mike%20movies/register.php?username=' + escape(username.value) + '&pwd=' + escape(pwd) + '$f_name=' + escape(firstname) + '&l_name=' + escape(lastname) + '&email=' + escape(email) + '&genre=' + escape(genre) + '&fav_movie=' + escape(fav_movie) + '&fav_desc=' + escape(fav_desc);
+
+
+        registerRequest.onreadystatechange = registrationProcessed;
+        registerRequest.open("GET", url, true);
+        registerRequest.send(null);
+
+        
+    }
+
+}
+
+function registrationProcessed(){
+
+    
+}
+
+function scrollImages(){
+    var images = document.querySelectorAll("#cover-bar img");
+
+    for (let index = 0; index < images.length; index++) {
+        var left  = images[index].style.left.substr(0, images[index].style.left.length - 2);
+        console.log(left);
+    }
+   
+
+}   
+
+scrollImages();
+
+
+// var images = document.querySelectorAll("#cover-bar img");
+// console.log(images);
 
