@@ -100,4 +100,31 @@ function swapTiles(targetTile, destinationTile){
     destinationTile.appendChild(selectedImage);
     // console.log(selectedImage, destinatedImage);
 
+    if(puzzleIsComplete()){
+        console.log("win");
+    }
+   
+
 }
+
+function puzzleIsComplete(){
+    var tiles = document.querySelectorAll("td img");
+
+    var tileOrder = "";
+
+    tiles.forEach((tile) => {
+        if(tile.alt != "empty"){
+            tileOrder += tile.alt;
+        }
+    });
+
+    if(tileOrder == "1234589101112131415"){
+        return true;
+    }
+
+    return false;
+
+    // console.log(tileOrder);
+}
+
+

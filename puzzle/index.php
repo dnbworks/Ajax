@@ -41,7 +41,7 @@
                                 <img src="asset/img/empty.jpg" alt="empty">
                             </td>
                             <td id="cell23">
-                                <img src="asset/img/3.jpg" alt="5">
+                                <img src="asset/img/3.jpg" alt="3">
                             </td>
                             <td id="cell24">
                                 <img src="asset/img/13.jpg" alt="13">
