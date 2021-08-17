@@ -13,16 +13,30 @@ function initpage(){
 
 
 function clickedLetter(e){
- var currentWordDiv = document.getElementById("currentWord");
- var letter = getActivatedObject(e).textContent;
- var p = document.createElement("p");
- var text = document.createTextNode(letter);
- var att = document.createAttribute("id", "tile21");
+    var element = getActivatedObject(e);
+    var currentWordDiv = document.getElementById("currentWord");
+    var letter = element.textContent;
 
+//  var att = document.createAttribute("id", "tile21");
+
+
+
+
+ if(currentWordDiv.childNodes.length == 0){
+    var p = document.createElement("p");
+    currentWordDiv.appendChild(p);
+
+    var text = document.createTextNode(letter);
+    p.appendChild(text);
+ } else {
+    var p = currentWordDiv.firstElementChild;
+    var letterText = p.firstChild;
+    letterText.nodeValue += letter;
+    // console.log(letterText);
+ }
+ this.className = "disabled";
+ this.onclick = '';
  
- currentWordDiv.appendChild(p);
- p.appendChild(text);
-//  console.log(letter);
 }
 
 function randomizeTiles(){
@@ -36,7 +50,8 @@ function randomizeTiles(){
         var letter = frequencyTable[index];
 
         letters[i].textContent = letter;
-        addEventHandler(letters[i], 'click', clickedLetter);
+        // addEventHandler(letters[i], 'click', clickedLetter);
+        letters[i].onclick = clickedLetter;
     }
 
 
